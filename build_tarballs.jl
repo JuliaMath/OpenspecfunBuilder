@@ -30,7 +30,8 @@ script = raw"""
 cd $WORKSPACE/srcdir
 cd openspecfun-0.5.3/
 make
-cp libopenspecfun.* ../../destdir/
+mkdir ../../destdir/lib/
+cp libopenspecfun.* ../../destdir/lib/
 
 """
 
