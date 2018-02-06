@@ -1,0 +1,40 @@
+language: julia
+os:
+  - linux
+julia:
+  - 0.6
+notifications:
+  email: false
+git:
+  depth: 99999999
+cache:
+  timeout: 1000
+  directories:
+    - downloads
+env:
+  global:
+    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+    - BINARYBUILDER_AUTOMATIC_APPLE=false
+sudo: required
+
+# Before anything else, get the latest versions of things
+before_script:
+  - julia -e 'Pkg.clone("https://github.com/JuliaPackaging/BinaryProvider.jl")'
+  - julia -e 'Pkg.clone("https://github.com/JuliaPackaging/BinaryBuilder.jl"); Pkg.build()'
+
+script:
+  - julia build_tarballs.jl
+
+
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for KristofferC/OpenspecfunBuilder; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: GIzo35iNohQ/AGUxxoFd1hH1fV8VxyHLl9mYoha/2MzaYE1jmj1eTJrDicDJ8WopAWfnHypmJZvtRCJN0hXGFgelU52ZbsB/k5zz+lT4GUZLiwwPiZv6eXsR5LdkAP5hMDXrSCRE3ly+LSVZgrfNHj7GY5VbYVTPlJ0BKD5XE2YBtfICLZeHkj7fDBiq5NoXjwCp5bFORIhJPlDhbZ3z31tgZrn6tYzryJ6phQMJ+IlCb0bgsmANjf6v7wqsXJ5N3x7GONq4x8Jlun1stgyyM0bXJUxJ4PyUTFYHeebEpYS/20auX/CHX5N8NG9jAGesmWIHxG7OtHx9GEsEMXjAZmHqU2yfT+uw9FkheAhaPCd6B2cjXflbvzOtY5XRE5PKOIGhRrWdqomYZHjP6s5nBxowG2MOzMVAOWBCdIIBwFY5oiOfEET0drA0ntCssJF4+6aNG+d2Ytm4b+UpNICdX0tN2gOd0f230Eh8s63gWyIkHuUlJj9+dIWWr8QqsiLgPYh4iiX8aGtBfUZAsiIlk+HFTG7XZmxbC198ow2c5YxbaV0tGUHjx5V0ctuk1By5B2Q+RTo5/HiwaaeR8hhJvVw6VmsaxzDMaWINQsh1EsmATR9482MAibq7urObF9IrefpW5tFYvVGlt1ykWA11TOocd/8fsXdYPPaNuQXZWmM=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: KristofferC/OpenspecfunBuilder
+        tags: true
