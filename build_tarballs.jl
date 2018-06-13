@@ -1,16 +1,9 @@
 using BinaryBuilder
 
-# These are the platforms built inside the wizard
-platforms = [
-  BinaryProvider.Linux(:i686, :glibc),
-  BinaryProvider.Linux(:x86_64, :glibc),
-  BinaryProvider.Linux(:aarch64, :glibc),
-  BinaryProvider.Linux(:armv7l, :glibc),
-  BinaryProvider.Linux(:powerpc64le, :glibc),
-  BinaryProvider.MacOS(),
-  BinaryProvider.Windows(:i686),
-  BinaryProvider.Windows(:x86_64)
-]
+platforms = supported_platforms()
+
+# FreeBSD doesn't work yet: BinaryBuilder.jl#277
+platforms = filter!(p -> !(p isa FreeBSD), platforms)
 
 # Collection of sources required to build openspecfun
 sources = [
@@ -19,10 +12,10 @@ sources = [
 ]
 
 script = raw"""
-cd $WORKSPACE/srcdir/openspecfun-0.5.3
-make
-mkpath $prefix/lib
-cp libopenspecfun.* $prefix/lib
+cd $WORKSPACE/srcdir/openspecfun-*
+make CC="$CC" CXX="$CXX" FC="$FC" -j${nproc}
+mkdir -p $libdir
+cp libopenspecfun*.${dlext}* $libdir
 """
 
 products(prefix) = [
