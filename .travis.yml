@@ -25,16 +25,15 @@ before_script:
 script:
   - julia build_tarballs.jl
 
-
 deploy:
-    provider: releases
-    api_key:
-        # Note; this api_key is only valid for KristofferC/OpenspecfunBuilder; you need
-        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
-        secure: GIzo35iNohQ/AGUxxoFd1hH1fV8VxyHLl9mYoha/2MzaYE1jmj1eTJrDicDJ8WopAWfnHypmJZvtRCJN0hXGFgelU52ZbsB/k5zz+lT4GUZLiwwPiZv6eXsR5LdkAP5hMDXrSCRE3ly+LSVZgrfNHj7GY5VbYVTPlJ0BKD5XE2YBtfICLZeHkj7fDBiq5NoXjwCp5bFORIhJPlDhbZ3z31tgZrn6tYzryJ6phQMJ+IlCb0bgsmANjf6v7wqsXJ5N3x7GONq4x8Jlun1stgyyM0bXJUxJ4PyUTFYHeebEpYS/20auX/CHX5N8NG9jAGesmWIHxG7OtHx9GEsEMXjAZmHqU2yfT+uw9FkheAhaPCd6B2cjXflbvzOtY5XRE5PKOIGhRrWdqomYZHjP6s5nBxowG2MOzMVAOWBCdIIBwFY5oiOfEET0drA0ntCssJF4+6aNG+d2Ytm4b+UpNICdX0tN2gOd0f230Eh8s63gWyIkHuUlJj9+dIWWr8QqsiLgPYh4iiX8aGtBfUZAsiIlk+HFTG7XZmxbC198ow2c5YxbaV0tGUHjx5V0ctuk1By5B2Q+RTo5/HiwaaeR8hhJvVw6VmsaxzDMaWINQsh1EsmATR9482MAibq7urObF9IrefpW5tFYvVGlt1ykWA11TOocd/8fsXdYPPaNuQXZWmM=
-    file_glob: true
-    file: products/*
-    skip_cleanup: true
-    on:
-        repo: KristofferC/OpenspecfunBuilder
-        tags: true
+  provider: releases
+  api_key:
+    # Note; this api_key is only valid for JuliaMath/OpenspecfunBuilder; you need
+    # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+    secure: HwXAsOPVxUR/pYnLu/g6CwDHCRb9uyzUVVT7pLUAi0Gop+eWU7i6mYIVxdrzRHo/zoVE0fCxzftifc9z1XdfXTcvSQbwob+Mdc1cA7tvo0aIJjN8zDwCS1uFe8NEUEdANuXFkRwg3lYBkpd81yf8edzNx7/1Bnyr7OjFooxcqCVpLAtdkAj4elQRvhhx50DJ5UcNOR+1ZXP2lsOgCypK8Aeh2Een7keZEFgFJzyvF4j/ovtJDUZHTvNq3BNLODnOE54Rsi4s0l8XhY0pnna6LRyW6FLbG3e61eWQwdY5+SSO55000B93PV+39JaSbmSa6OI3XsfMMjIZfKHSta+mKwAdb4STGS20fPE4bnKW4bMi6UQAg59i/iowO/CtTLWtuzLI8CWYv1Oi21aLXJVL2t1a9hIbYlvtsB4PuV7dCMvwhkwk0MawIHcknu8M1AKLgg3qcgmNu0z+QQ83B7wNgsUihc2lllofQqqNj5WO/WapSkL5jZ8F/EiNfieh87TB8Oq6uTldaFXVR5UMygYJZLm6ftc8cd9Bzs2A6/f+LVjdO0boiagywSfuT3OlQDqCBsx6l6lnJ6k4za3o5SW0FJ629FImgxhD+soxiB8Bx8ddJ1Jg1Tube+AA535zHjm8kV61cMcTY9JqXWFKG7cO+TN9ccCG2aul1G+mT/pulpw=
+  file_glob: true
+  file: products/*
+  skip_cleanup: true
+  on:
+    repo: JuliaMath/OpenspecfunBuilder
+    tags: true
