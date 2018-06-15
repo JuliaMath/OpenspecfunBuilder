@@ -23,8 +23,7 @@ fi
 make OS=${OS} CC="$CC" CXX="$CXX" FC="$FC" -j${nproc}
 
 # Install it
-mkdir -p $libdir $prefix/include
-mv libopenspecfun*.${dlext}* $libdir/
+make install OS=${OS} prefix=$prefix
 """
 
 # These are the platforms we will build for by default, unless further
