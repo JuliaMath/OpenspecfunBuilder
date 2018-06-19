@@ -2,7 +2,7 @@ using BinaryBuilder
 
 # Collection of sources required to build openspecfun
 sources = [
-    "https://github.com/JuliaLang/openspecfun/archive/v0.5.3.tar.gz" =>
+    "https://github.com/JuliaMath/openspecfun/archive/v0.5.3.tar.gz" =>
     "1505c7a45f9f39ffe18be36f7a985cb427873948281dbcd376a11c2cd15e41e7",
 ]
 
