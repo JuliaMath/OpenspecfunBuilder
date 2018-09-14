@@ -1,5 +1,8 @@
 using BinaryBuilder
 
+name = "Openspecfun"
+version = v"0.5.3"
+
 # Collection of sources required to build openspecfun
 sources = [
     "https://github.com/JuliaMath/openspecfun/archive/v0.5.3.tar.gz" =>
@@ -40,4 +43,4 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, "libopenspecfun", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
