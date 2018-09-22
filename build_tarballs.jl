@@ -30,8 +30,10 @@ make install OS=${OS} prefix=$prefix
 """
 
 # These are the platforms we will build for by default, unless further
-# platforms are passed in on the command line
-platforms = supported_platforms()
+# platforms are passed in on the command line. Since openspecfun uses
+# Fortran for AMOS, we need the combinatorial explosion of platforms
+# and GCC versions.
+platforms = expand_gcc_versions(supported_platforms())
 
 # The products that we will ensure are always built
 products = prefix -> [
